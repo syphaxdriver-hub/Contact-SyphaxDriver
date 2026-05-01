@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SyphaxDriver</title>
+    <!-- Police ultra-moderne (Plus Jakarta Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --whatsapp: #25D366;
+            --facebook: #1877F2;
+            --snapchat: #FFFC00;
+            --phone: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            /* Arrière-plan animé ultra-moderne Black & Gold */
+            background: linear-gradient(45deg, #0a0a0a, #1f1807, #000000, #171103);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Orbes décoratifs en arrière-plan */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            animation: float 12s infinite ease-in-out alternate;
+        }
+        .orb-1 { width: 350px; height: 350px; background: rgba(191, 149, 63, 0.4); top: -50px; left: -100px; }
+        .orb-2 { width: 450px; height: 450px; background: rgba(138, 90, 25, 0.3); bottom: -100px; right: -50px; animation-delay: -4s; animation-duration: 15s; }
+        .orb-3 { width: 300px; height: 300px; background: rgba(252, 246, 186, 0.15); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: float-center 10s infinite ease-in-out alternate; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 80px) scale(1.2); }
+        }
+        @keyframes float-center {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-30%, -70%) scale(1.5); }
+        }
+
+        /* Conteneur de la carte principale */
+        .card {
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(191, 149, 63, 0.2);
+            border-radius: 36px;
+            padding: 40px 24px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo / Photo avec bordure dorée animée */
+        .profile-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #aa771c);
+            border-radius: 50%;
+            z-index: -1;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center center;
+            border: 4px solid #141414;
+        }
+
+        /* Typographie */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fcf6ba, #bf953f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: #b0b0b0;
+            font-size: 15px;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Boutons pilules ultra-modernes (Apple style) */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 20px 10px 10px;
+            border-radius: 100px;
+            border: 1px solid rgba(191, 149, 63, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(191, 149, 63, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .link-btn i.main-icon {
+            font-size: 20px;
+            transition: all 0.3s ease;
+            color: #bf953f;
+        }
+
+        .link-btn span {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .chevron {
+            font-size: 14px;
+            color: rgba(191, 149, 63, 0.5);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        /* Effets de survol (Hover) Avancés */
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 100px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-btn:hover .chevron {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .link-btn:hover .icon-wrapper {
+            background: #fff;
+        }
+
+        /* Couleurs de marque dynamiques au survol */
+        .btn-whatsapp:hover::before { background: linear-gradient(90deg, rgba(37, 211, 102, 0.15), transparent); opacity: 1; }
+        .btn-whatsapp:hover .icon-wrapper { box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp:hover .main-icon { color: var(--whatsapp); }
+
+        .btn-facebook:hover::before { background: linear-gradient(90deg, rgba(24, 119, 242, 0.15), transparent); opacity: 1; }
+        .btn-facebook:hover .icon-wrapper { box-shadow: 0 0 20px rgba(24, 119, 242, 0.4); }
+        .btn-facebook:hover .main-icon { color: var(--facebook); }
+
+        .btn-snapchat:hover::before { background: linear-gradient(90deg, rgba(255, 252, 0, 0.15), transparent); opacity: 1; }
+        .btn-snapchat:hover .icon-wrapper { box-shadow: 0 0 20px rgba(255, 252, 0, 0.4); }
+        .btn-snapchat:hover .main-icon { color: #000; }
+        .btn-snapchat .main-icon { text-shadow: 0 0 1px rgba(255,255,255,0.2); }
+
+        .btn-phone:hover::before { background: linear-gradient(90deg, rgba(226, 232, 240, 0.1), transparent); opacity: 1; }
+        .btn-phone:hover .icon-wrapper { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+        .btn-phone:hover .main-icon { color: #0f172a; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Orbes d'arrière-plan animés -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="card">
+        <div class="profile-container">
+            <!-- La photo que vous venez d'uploader (sauvegardez-la sous le nom logo.jpg) -->
+            <img src="Syphax.jpg" alt="Logo Syphax Driver" class="profile-img">
+        </div>
+        
+        <h1>Syphax Driver</h1>
+        <p>Service de chauffeur privé</p>
+
+        <div class="links-container">
+            <!-- WHATSAPP -->
+            <a href="https://wa.me/33612345678" class="link-btn btn-whatsapp" target="_blank">
+                <div class="link-content">
+                    <div class="icon-wrapper"><i class="fab fa-whatsapp main-icon"></i></div>
+                    <span>WhatsApp</span>
+                </div>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+
+            <!-- FACEBOOK -->
+            <a href="https://www.facebook.com/profile.php?id=61575417527056" class="link-btn btn-facebook" target="_blank">
+                <div class="link-content">
+                    <div class="icon-wrapper"><i class="fab fa-facebook-f main-icon"></i></div>
+                    <span>Facebook</span>
+                </div>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+
+            <!-- SNAPCHAT -->
+            <a href="https://www.snapchat.com/add/syphax-driver" class="link-btn btn-snapchat" target="_blank">
+                <div class="link-content">
+                    <div class="icon-wrapper"><i class="fab fa-snapchat-ghost main-icon"></i></div>
+                    <span>Snapchat</span>
+                </div>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+
+            <!-- TÉLÉPHONE DIRECT -->
+            <a href="tel:+33699210773" class="link-btn btn-phone">
+                <div class="link-content">
+                    <div class="icon-wrapper"><i class="fas fa-phone-alt main-icon"></i></div>
+                    <span>Appeler</span>
+                </div>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
